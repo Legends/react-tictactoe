@@ -2,13 +2,13 @@ import React from 'react';
 import Square from './Square';
 
 class Board extends React.Component {
-  renderSquare(i) {
+  renderSquare(idxOfClickedFieldOnBoard) {
     const { squares, winningSquares } = this.props;
     return (
       <Square
-        value={squares[i]}
-        winnerClass={winningSquares && winningSquares.includes(i) ? 'square--winner' : ''}
-        onClick={() => this.props.onClick(i)}
+        value={squares[idxOfClickedFieldOnBoard]}
+        winnerClass={winningSquares && winningSquares.includes(idxOfClickedFieldOnBoard) ? 'square--winner' : ''}
+        onClick={() => this.props.onClick(idxOfClickedFieldOnBoard)}
       />
     );
   }
