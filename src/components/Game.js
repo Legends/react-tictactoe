@@ -104,12 +104,14 @@ class Game extends React.Component {
       xIsNext: !(step % 2),
     });
   }
+
   changeMovesSort(isMovesSortReversed) {
     this.setState({
       isMovesSortReversed: !isMovesSortReversed,
     });
   }
-  render() {
+
+  render() { // Game
     const history = this.state.history;
     const current = history[this.state.stepNumber]; // get current board snapShot
 
@@ -153,7 +155,7 @@ class Game extends React.Component {
           <div>{status}</div> {/* Winner / Draw / Next player X|O */}
 
           <ol reversed={isMovesSortReversed ? 'reversed' : ''}>
-            {isMovesSortReversed ? moves.reverse() : moves}
+            {isMovesSortReversed ? moves.reverse() : moves} {/* render history of li>button asc|desc */}
           </ol>
 
           <p><strong>Sort: </strong>{isMovesSortReversed ? 'Descending' : 'Ascending'}</p>
