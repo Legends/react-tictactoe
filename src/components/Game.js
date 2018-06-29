@@ -96,14 +96,15 @@ class Game extends React.Component {
       status = `Next player: ${this.state.xIsNext ? 'X' : 'O'}`;
     }
 
-    const moves = history.map((step, move) => {
-      const desc = move ? `Move #${move} (${step.moveLocation})` : 'Game start';
+    // create history list of moves/snapshots
+    const moves = history.map((snapshot, moveIdx) => {
+      const desc = moveIdx ? `Move #${moveIdx} (${snapshot.moveLocation})` : 'Game start';
       return (
         // eslint-disable-next-line react/no-array-index-key
-        <li key={move}>
+        <li key={moveIdx}>
           <button
-            onClick={() => this.jumpTo(move)}
-            className={this.state.stepNumber === move ? 'button--link strong' : 'button--link'}
+            onClick={() => this.jumpTo(moveIdx)}
+            className={this.state.stepNumber === moveIdx ? 'button--link strong' : 'button--link'}
           >
             {desc}
           </button>
@@ -112,6 +113,7 @@ class Game extends React.Component {
     });
 
     const { isMovesSortReversed } = this.state;
+    
     return (
       <div className="game">
         <div>
